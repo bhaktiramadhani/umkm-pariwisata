@@ -23,6 +23,7 @@ include '../layouts/navbar.php';
                     <input type="hidden" id="post_penginapan" name="penginapan" value="">
                     <input type="hidden" id="post_makan" name="makan" value="">
                     <input type="hidden" id="total_bayar" name="total_bayar" value="">
+                    <input type="hidden" id="wisata_id" name="wisata_id" value="<?= $wisata['id'] ?>">
                     <div class="mb-6 grid grid-cols-1 gap-4">
                         <div class="col-span-2 sm:col-span-1">
                             <label for="nama_pemesan" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Nama Pemesan </label>
@@ -93,6 +94,10 @@ include '../layouts/navbar.php';
                                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Makan</dt>
                                 <dd id="harga-makan" class="text-base font-medium text-gray-900 dark:text-white">Rp. <?= number_format(0, 0, ',', '.') ?></dd>
                             </dl>
+                            <dl class="flex items-center justify-between gap-4">
+                                <dt class="text-base font-normal text-gray-500 dark:text-gray-400"></dt>
+                                <dd id="total-sementara" class="text-base font-medium text-gray-900 dark:text-white">Rp. <?= number_format(0, 0, ',', '.') ?></dd>
+                            </dl>
                         </div>
 
                         <dl class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
@@ -157,7 +162,7 @@ include '../layouts/navbar.php';
                 totalHarga += hargaMakan;
                 hargaMakanElement.innerText = `Rp. ${new Intl.NumberFormat().format(hargaMakan)}`;
             } else {
-                hargaMakanElement.innerText = `Rp. ${new Intl.NumberFormat().format(0).replace(',', '.')}`;
+                hargaMakanElement.innerText = `Rp. ${new Intl.NumberFormat().format(0)}`;
             }
 
             total.innerText = `Rp. ${new Intl.NumberFormat().format(totalHarga * waktuPerjalanan * jumlahOrang)}`;
@@ -166,6 +171,7 @@ include '../layouts/navbar.php';
             document.getElementById('post_transportasi').value = transportasi ? hargaTransportasi : 0;
             document.getElementById('post_penginapan').value = penginapan ? hargaPenginapan : 0;
             document.getElementById('post_makan').value = makan ? hargaMakan : 0;
+            document.getElementById('total-sementara').innerText = `Rp. ${new Intl.NumberFormat().format(totalHarga)} x ${waktuPerjalanan} Hari x ${jumlahOrang} Orang`;
             document.getElementById('total_bayar').value = totalHarga * waktuPerjalanan * jumlahOrang;
         } else {
             alert('Pilih salah satu layanan');
