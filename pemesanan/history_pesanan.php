@@ -6,7 +6,7 @@ include '../layouts/navbar.php';
 
 
 
-<div class="relative overflow-x-auto shadow-md">
+<div class="relative overflow-x-auto shadow-md min-h-screen">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
             History Pesanan
@@ -92,8 +92,9 @@ include '../layouts/navbar.php';
                                 <td class="px-6 py-4">
                                     ${data.pesanan.total_bayar}
                                 </td>
-                                <td class="px-6 py-4 text-right">
+                                <td class="px-6 py-4 flex gap-2">
                                     <a href="/pemesanan/edit_pesanan.php?pesanan=${data.pesanan.id}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <a href="/pemesanan/hapus_pesanan.php?pesanan=${data.pesanan.id}" class="font-medium text-red-600 dark:text-red-500 hover:underline">Hapus</a>
                                 </td>
                             </tr>
                         `;
