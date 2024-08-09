@@ -93,7 +93,7 @@ include '../layouts/navbar.php';
                                     ${data.pesanan.total_bayar}
                                 </td>
                                 <td class="px-6 py-4 text-right">
-                                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <a href="/pemesanan/edit_pesanan.php?pesanan=${data.pesanan.id}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                 </td>
                             </tr>
                         `;
